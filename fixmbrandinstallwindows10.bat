@@ -8,6 +8,8 @@ assign letter V
 active
 exit  
 title FIX MBR
+bootrec /fixmbr
+bootrec /scanos
 bootsect /nt60 C: /mbr
 bcdboot D:\windows /s C:
 title Install Windows 10 Pro
