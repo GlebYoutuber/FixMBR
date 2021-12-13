@@ -1,20 +1,21 @@
 @echo off
 diskpart 
+pause
 sel vol 0 
 del vol 
 creat par prim size=250000
 format fs=ntfs QUICK COMPRESS
-assign letter V
+assign letter C
 active
 exit  
 title FIX MBR
 bootrec /fixmbr
 bootrec /scanos
+pause
+title Install Windows 10
+dism /Apply-Image /ImageFile:E:\sources\install.esd /Index:1 /ApplyDir:C:\
 bootsect /nt60 C: /mbr
 bcdboot D:\windows /s C:
-title Install Windows 10 Pro
-dism /export-image /SourceImageFile:D:\sources\install.esd /SourceIndex:4 /DestinationImageFile:C:\InstallWindows10\install.wim /Compress:max /CheckIntegrity
-dism /Apply-Image /ImageFile:V:\install.wim /Index:4 /ApplyDir:C:\
 title DONE!!!!
 pause
 exit
