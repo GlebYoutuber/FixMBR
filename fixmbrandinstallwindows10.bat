@@ -15,7 +15,7 @@ pause
 title Install Windows 10
 dism /Apply-Image /ImageFile:E:\sources\install.esd /Index:1 /ApplyDir:C:\
 bootsect /nt60 C: /mbr
-bcdboot D:\windows /s C:
+bcdboot C:\Windows
 title DONE!!!!
 pause
 exit
